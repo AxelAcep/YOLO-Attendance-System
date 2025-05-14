@@ -31,6 +31,7 @@ if __name__ == "__main__":
     observer.start()
 
     print("👀 Watching for changes... Press Ctrl+C to stop.")
+    print("👀 Watching for changes... Press Ctrl+C to stop.")
     try:
         while True:
             time.sleep(1)

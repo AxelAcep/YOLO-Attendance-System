@@ -14,18 +14,21 @@ class Home(QWidget):
 
     def CreateKelas(self):
         print("Buat Kelas button clicked")
+        self.main_window.stacked_widget.setCurrentWidget(self.main_window.page7)
         #QTimer.singleShot(0, self.switch_to_dashboard)
     
     def RekamKelas(self):
         print("Rekam Kelas button clicked")
-        #QTimer.singleShot(0, self.switch_to_dashboard)
+        self.main_window.stacked_widget.setCurrentWidget(self.main_window.page4)
 
     def ProfileKelas(self):
         print("Profile button clicked")
+        self.main_window.stacked_widget.setCurrentWidget(self.main_window.page5)
         #QTimer.singleShot(0, self.switch_to_dashboard)
         
     def HistoryKelas(self):
         print("History button clicked")
+        self.main_window.stacked_widget.setCurrentWidget(self.main_window.page6)
         #QTimer.singleShot(0, self.switch_to_dashboard)
 
     def create_block(self, color: str, text: str) -> QFrame:
@@ -61,18 +64,58 @@ class Home(QWidget):
         logo_label.setPixmap(logo_pixmap)
         header_layout.addWidget(logo_label)
 
+        profile_label = QLabel()
+        profile_label.setFixedSize(int(height* 0.05), int(height* 0.05))
+
         header_layout.addStretch()
 
         # Greeting Text
-        greeting_label = QLabel(f"Selamat Datang, {name}", header)
-        greeting_label.setStyleSheet("""
+        dashboard_label = QLabel(f"Dashboard", header)
+        kelas_label = QLabel(f"Kelas", header)
+        record_label = QLabel(f"Record", header)
+        history_label = QLabel(f"History", header)
+
+        dashboard_label.setStyleSheet("""
             font-family: 'Nunito Sans', 'Segoe UI', Sans-serif;
             font-size: 21px;
             font-weight: bold;
-            color: #6E7491;
+            color: #018298;
+            padding-right: 10px;
         """)
-        header_layout.addWidget(greeting_label)
+        kelas_label.setStyleSheet("""
+            font-family: 'Nunito Sans', 'Segoe UI', Sans-serif;
+            font-size: 21px;
+            font-weight: semi-bold;
+            color: #7C8DB0;
+            padding-right: 10px;
+        """)
+        record_label.setStyleSheet("""
+            font-family: 'Nunito Sans', 'Segoe UI', Sans-serif;
+            font-size: 21px;
+            font-weight: semi-bold;
+            color: #7C8DB0;
+            padding-right: 10px;
+        """)
+        history_label.setStyleSheet("""
+            font-family: 'Nunito Sans', 'Segoe UI', Sans-serif;
+            font-size: 21px;
+            font-weight: semi-bold;
+            color: #7C8DB0;
+            padding-right: 10px;
+        """)
 
+        profile_label.setStyleSheet("""
+            background-color: #d9d9d9; /* Warna abu-abu muda sebagai placeholder */
+            border-radius: 20px; /* 40/2 supaya benar-benar bulat */
+        """)
+
+        header_layout.addWidget(dashboard_label)
+        header_layout.addWidget(kelas_label)
+        header_layout.addWidget(record_label)
+        header_layout.addWidget(history_label)
+
+        header_layout.addWidget(profile_label)
+        
         return header
 
     
